@@ -23,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow): #Создание окна прилож
         super(MainWindow, self).__init__(*args, **kwargs)                              #Определяем метод родительского класса
         self.setGeometry(100, 100, 400, 300)                                           #Определяем размер окна
         self.setWindowTitle("Программа")                                               #Определяем название окна
-        self.setWindowIcon(QtGui.QIcon("icon.jpg"))                                    #Определяем иконку окна
+        self.setWindowIcon(QtGui.QIcon("program_icon.jpg"))                            #Определяем иконку окна
         self.setFixedSize(400, 300)                                                    #Определяем размер окна
         self.setCentralWidget(QtWidgets.QWidget(self))                                 #Определяем окно с классом
 
