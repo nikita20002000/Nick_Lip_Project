@@ -4,6 +4,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Window.mainW import Ui_MainWindow
 from Window.developer_info import Ui_Dialog
 from Window.about_programm import Ui_Dialog_1
+from Window.donate import Ui_Dialog_2
+from Window.titul_generate import Ui_Dialog_3
 
 
 
@@ -34,6 +36,18 @@ class about_programm(QtWidgets.QDialog, Ui_Dialog_1):
         self.setupUi_1(self)
         self.setWindowIcon(QtGui.QIcon())
 
+class donate(QtWidgets.QDialog, Ui_Dialog_2):
+    def __init__(self, parent=None):
+        super(donate, self).__init__()
+        self.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon())
+
+class titul_generate_window(QtWidgets.QDialog, Ui_Dialog_3):
+    def __init__(self, parent=None):
+        super(titul_generate_window, self).__init__()
+        self.setupUi(self)
+        self.setWindowIcon(QtGui.QIcon())
+
 
 class Main(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -49,8 +63,10 @@ class Main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)
         self.setWindowFlags(QtCore.Qt.WindowMaximizeButtonHint)
 
+        self.pushButton_2.clicked.connect(self.show_titul_generate)
         self.action.triggered.connect(self.show_developer_info)  ##подключил кнопку вывода инфы про разработчиков
         self.actionEduHelper.triggered.connect(self.show_about_programm)  ##подключ
+        self.action_2.triggered.connect(self.show_donates)  ##подключил
 
     def show_developer_info(self):
         self.Dialog = developers_window()
@@ -59,6 +75,12 @@ class Main(QtWidgets.QMainWindow, Ui_MainWindow):
     def show_about_programm(self):
         self.Dialog_1 = about_programm()
         self.Dialog_1.show()
+    def show_donates(self):
+        self.Dialog_2 = donate()
+        self.Dialog_2.show()
+    def show_titul_generate(self):
+        self.Dialog_3 = titul_generate_window()
+        self.Dialog_3.show()
 
 
 
