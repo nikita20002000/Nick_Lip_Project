@@ -6,6 +6,7 @@ from Window.developer_info import Ui_Dialog
 from Window.about_programm import Ui_Dialog_1
 from Window.donate import Ui_Dialog_2
 from Window.titul_generate import Ui_Dialog_3
+from Functional.funcdoc import create_titul
 
 
 
@@ -48,6 +49,25 @@ class titul_generate_window(QtWidgets.QDialog, Ui_Dialog_3):
         self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon())
 
+        self.pushButton.clicked.connect(self.get_titul_info)
+
+
+    def get_titul_info(self):
+        name = self.lineEdit.text()
+        surname = self.lineEdit_2.text()
+        lastname = self.lineEdit_4.text()
+        group = self.lineEdit_3.text()
+        position_in_sub_list = 0
+
+        for i in range(len(self.mass_of_subjects)):
+            if self.mass_of_subjects[i].isChecked():
+                position_in_sub_list = i
+                break
+
+        create_titul(name, surname, lastname, group, position_in_sub_list)
+
+
+
 
 class Main(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -64,7 +84,7 @@ class Main(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setWindowFlags(QtCore.Qt.WindowMaximizeButtonHint)
 
         self.pushButton_2.clicked.connect(self.show_titul_generate)
-        self.action.triggered.connect(self.show_developer_info)  ##подключил кнопку вывода инфы про разработчиков
+        self.action.triggered.connect(self.show_developer_info)  ##подключил кнопк]]у вывода инфы про разработчиков
         self.actionEduHelper.triggered.connect(self.show_about_programm)  ##подключ
         self.action_2.triggered.connect(self.show_donates)  ##подключил
 
