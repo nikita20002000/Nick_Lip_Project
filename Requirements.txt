@@ -1,0 +1,5 @@
+1: PyQt 5-sip 12.11.1
+2: PyQt5-stubs 5.15.6.0
+3: PyQt5 - Qt5 5.15.2
+4: python-docx 0.8.11
+5: pytest 7.2.2 for testing
